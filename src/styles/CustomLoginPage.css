@@ -1,0 +1,203 @@
+/* General Page Layout */
+.container {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Top Row 1: Two Independent Columns */
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  width: 100%;
+}
+
+/* Left Section: Aligns Main Logo to the Left */
+.top-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  padding-left: 10px;
+}
+
+.main-logo {
+  height: 80px;
+  width: auto;
+}
+
+/* Right Section: Aligns Top Logo to the Right */
+.top-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+  padding-right: 10px;
+}
+
+.top-logo {
+  height: 80px;
+  width: auto;
+}
+
+/* Top Row 2: Full Width Centered */
+.top-row-2 {
+  background-color: #2196F3;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Middle Section: 3 Equal Columns */
+.middle-row {
+  display: flex;
+  flex-grow: 1;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
+}
+
+/* Column Styling */
+.column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  padding: 1px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* Login Column */
+.login-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 1px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+}
+
+/* Center "Welcome Back" */
+.welcome-back {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Login Form */
+.login-form {
+  width: 100%;
+}
+
+/* Form Labels */
+.login-form label {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Input Fields: Longer Width */
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Save to This Computer Checkbox */
+.remember-me {
+  display: flex;
+  align-items: left;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.remember-me input {
+  margin-right: 1cqi;
+}
+
+/* Login Button - Reduced Width */
+.login-button {
+  width: 40%;
+  padding: 10px;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.login-button:hover {
+  background-color: #1769aa;
+}
+
+/* Middle Column: Ensure Image Scales Properly */
+.middle-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.middle-column img {
+  width: 90%;
+  max-width: 1254px;
+  border-radius: 15px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Support Column */
+.support-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Support Links */
+.support-column ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.support-column a {
+  text-decoration: none;
+  color: #2196F3;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.support-column a:hover {
+  text-decoration: underline;
+}
+
+/* Bottom Row */
+.bottom-row {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+  position: relative;
+}
