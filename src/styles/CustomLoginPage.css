@@ -31,6 +31,7 @@
 .main-logo {
   height: 80px;
   width: auto;
+  max-width: 100%;
 }
 
 /* Right Section: Aligns Top Logo to the Right */
@@ -45,6 +46,7 @@
 .top-logo {
   height: 80px;
   width: auto;
+  max-width: 100%;
 }
 
 /* Top Row 2: Full Width Centered */
@@ -53,9 +55,10 @@
   color: white;
   text-align: center;
   padding: 10px;
+  font-size: 1.2rem;
 }
 
-/* Middle Section: 3 Equal Columns */
+/* Middle Section: Responsive 3-Column Layout */
 .middle-row {
   display: flex;
   flex-grow: 1;
@@ -63,6 +66,7 @@
   justify-content: space-between;
   align-items: stretch;
   width: 100%;
+  flex-wrap: wrap; /* Allows stacking on smaller screens */
 }
 
 /* Column Styling */
@@ -85,10 +89,10 @@
   flex-direction: column;
   align-items: center;
   background-color: white;
-  padding: 20px;
+  padding: 10px;
   border-radius: 1px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
+  width: 90%;
   max-width: 450px;
 }
 
@@ -96,6 +100,7 @@
 .welcome-back {
   text-align: center;
   margin-bottom: 10px;
+  font-size: 1.5rem;
 }
 
 /* Login Form */
@@ -109,41 +114,57 @@
   text-align: left;
   margin-bottom: 5px;
   font-weight: bold;
+  font-size: 1rem;
 }
 
-/* Input Fields: Longer Width */
+/* Input Fields: 90% Width */
 .login-form input {
-  width: 100%;
+  width: 90%;  /* Makes input take 80% of the container width */
+  max-width: 400px; /* Prevents it from getting too wide on large screens */
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  font-size: 1rem;
 }
 
-/* Save to This Computer Checkbox */
+/* Adjusting input fields for smaller screens */
+@media (max-width: 768px) {
+  .login-form input {
+    width: 90%;  /* Increase width for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .login-form input {
+    width: 100%; /* Full width on very small screens */
+  }
+}
+
+/* Remember Me Checkbox */
 .remember-me {
   display: flex;
-  align-items: left;
+  align-items: center;
   width: 100%;
   margin-bottom: 20px;
 }
 
 .remember-me input {
-  margin-right: 1cqi;
+  margin-right: 10px;
 }
 
-/* Login Button - Reduced Width */
+/* Login Button */
 .login-button {
-  width: 40%;
-  padding: 10px;
+  width: 50%;
+  padding: 12px;
   background-color: #2196F3;
   color: white;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 1.2rem;
   cursor: pointer;
   text-align: center;
-  }
+}
 
 .login-button:hover {
   background-color: #1769aa;
@@ -158,8 +179,8 @@
 }
 
 .middle-column img {
-  width: 90%;
-  max-width: 1254px;
+  width: 100%;
+  max-width: 1200px;
   border-radius: 15px;
   height: auto;
   object-fit: contain;
@@ -186,6 +207,7 @@
   font-weight: bold;
   display: block;
   margin-bottom: 10px;
+  font-size: 1.1rem;
 }
 
 .support-column a:hover {
@@ -200,4 +222,84 @@
   padding: 10px;
   width: 100%;
   position: relative;
+}
+
+/* 🔹 RESPONSIVE DESIGN 🔹 */
+@media (max-width: 1024px) {
+  .middle-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .column {
+    width: 90%;
+    margin-bottom: 15px;
+  }
+
+  .login-button {
+    width: 60%;
+  }
+
+  .top-row-2 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-row {
+    flex-direction: column;
+    text-align: center;
+    padding: 5px;
+  }
+
+  .top-left, .top-right {
+    justify-content: center;
+    padding: 5px;
+  }
+
+  .top-logo, .main-logo {
+    height: 60px;
+  }
+
+  .middle-column img {
+    max-width: 90%;
+  }
+
+  .login-button {
+    font-size: 1rem;
+    width: 70%;
+  }
+
+  .top-row-2 {
+    font-size: 0.9rem;
+  }
+
+  .support-column a {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-back {
+    font-size: 1.2rem;
+  }
+
+  .login-button {
+    font-size: 0.9rem;
+    padding: 10px;
+    width: 80%;
+  }
+
+  .top-logo, .main-logo {
+    height: 50px;
+  }
+
+  .top-row-2 {
+    font-size: 0.8rem;
+    padding: 8px;
+  }
+
+  .support-column a {
+    font-size: 0.9rem;
+  }
 }
