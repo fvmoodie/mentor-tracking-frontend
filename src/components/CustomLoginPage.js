@@ -19,10 +19,10 @@ const CustomLoginPage = () => {
       {/* Top Row 1: Two Independent Columns */}
       <div className="top-row">
         <div className="top-left">
-          <img src="/assets/mainlogo.png" alt="Main Logo" className="main-logo" />
+          <img src="/assets/MainLogo.png" alt="Main Logo" className="main-logo" />
         </div>
         <div className="top-right">
-          <img src="/assets/toplogo.png" alt="Top Logo" className="top-logo" />
+          <img src="/assets/TopLogo.png" alt="Top Logo" className="top-logo" />
         </div>
       </div>
 
