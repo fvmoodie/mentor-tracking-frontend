@@ -1,0 +1,154 @@
+/* General Standardized Page Layout */
+.layout-container {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+  }
+  
+  .layout-welcome-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    margin-left: 10px;
+  }
+  
+  /* Top Row 1: Header with Two Sections */
+  .layout-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    width: 100%;
+  }
+  
+  .layout-header-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 1;
+    padding-left: 10px;
+    gap: 20px;
+  }
+  
+  .layout-logo {
+    height: 80px;
+    width: auto;
+    max-width: 100%;
+  }
+  
+  .layout-header-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+    padding-right: 10px;
+    position: relative;
+  }
+  
+  .layout-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .layout-search-bar {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 8px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 200px;
+  }
+  
+  .layout-top-logo {
+    height: 80px;
+    width: auto;
+    max-width: 100%;
+  }
+  
+  .layout-notification-bar {
+    width: 100%;
+    background-color: #2196F3;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.2rem;
+  }
+  
+  .layout-middle-section {
+    display: flex;
+    flex-grow: 1;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  
+  .layout-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 10px;
+    height: 100%;
+    box-sizing: border-box;
+    gap: 5px !important;
+  }
+  
+  .layout-left-column {
+    align-items: flex-end;
+    text-align: right;
+  }
+  
+  .layout-center-column {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .layout-right-column {
+    align-items: flex-start;
+    text-align: left;
+  }
+  
+  .layout-footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    font-size: 0.9rem;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .layout-two-columns {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .layout-three-columns {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .layout-middle-section {
+      flex-direction: column;
+    }
+
+    .layout-column {
+      width: 100%;
+    }
+  }

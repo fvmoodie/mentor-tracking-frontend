@@ -78,7 +78,7 @@
   align-items: center;
   background-color: #f4f4f4;
   border: 1px solid #ddd;
-  padding: 1px;
+  padding: 10px;
   height: 100%;
   box-sizing: border-box;
 }
@@ -88,19 +88,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f4f4f4; /* Same as other sections */
-  padding: 10px;
+  background-color: #f4f4f4;
+  padding: 15px;
   border-radius: 1px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   width: 90%;
   max-width: 450px;
 }
 
-/* Center "Welcome Back" */
+/* Center "Sign Up" */
 .welcome-back {
   text-align: center;
-  margin-bottom: 10px;
+  width: 100%; /* Ensures it takes full width */
+  margin-bottom: 10px; /* Adjusted for no extra space above */
   font-size: 1.5rem;
+  margin-top: 0; /* Removed extra space */
 }
 
 /* Login Form */
@@ -112,45 +114,64 @@
 .login-form label {
   width: 100%;
   text-align: left;
+  display: block; /* Ensures it stays on its own line */
   margin-bottom: 5px;
   font-weight: bold;
   font-size: 1rem;
 }
 
-/* Input Fields: 90% Width */
+/* Input Fields */
 .login-form input {
-  width: 90%;  /* Makes input take 80% of the container width */
-  max-width: 400px; /* Prevents it from getting too wide on large screens */
-  padding: 10px;
-  margin-bottom: 15px;
+  width: 90%;  /* Default width for login inputs */
+  max-width: 400px;
+  padding: 8px; /* Reduced padding for smaller height */
+  margin-bottom: 10px; /* Reduced margin for less height */
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 0.9rem; /* Slightly reduced font size */
+}
+.remember-me {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Left-aligns the text */
+  width: 100%;
+  white-space: nowrap; /* Prevents text from wrapping */
+  margin-bottom: 15px; /* Adds space below the checkbox */
+}
+
+.remember-me input {
+  margin-right: 1; /* Remove any extra margin */
+  padding-right: 1; /* Prevent padding from affecting spacing */
+  width: auto; /* Ensure the checkbox is its natural size */
+
+}
+
+.remember-me label {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* Password Validation Error Message */
+.password-error {
+  color: red;
+  font-size: .9rem;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  text-align: left;
+  width: 100%;
 }
 
 /* Adjusting input fields for smaller screens */
 @media (max-width: 768px) {
   .login-form input {
-    width: 90%;  /* Increase width for smaller screens */
+    width: 90%;
   }
 }
 
 @media (max-width: 480px) {
   .login-form input {
-    width: 100%; /* Full width on very small screens */
+    width: 100%;
   }
-}
-
-/* Remember Me Checkbox */
-.remember-me {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.remember-me input {
-  margin-right: 10px;
 }
 
 /* Login Button */
@@ -164,8 +185,11 @@
   font-size: 1.2rem;
   cursor: pointer;
   text-align: center;
-}
+  margin: 10px auto; /* Centers button horizontally */
+  margin-top: 10px; /* Ensures spacing from above elements */
+  }
 
+  
 .login-button:hover {
   background-color: #1769aa;
 }
@@ -186,120 +210,27 @@
   object-fit: contain;
 }
 
-/* Support Column */
-.support-column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 10px;
-}
-
-/* Support Links */
-.support-column ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.support-column a {
-  text-decoration: none;
-  color: #2196F3;
-  font-weight: bold;
-  display: block;
-  margin-bottom: 10px;
-  font-size: 1.1rem;
-}
-
-.support-column a:hover {
-  text-decoration: underline;
-}
-
-/* Bottom Row */
 .bottom-row {
   background-color: #333;
   color: white;
   text-align: center;
-  padding: 10px;
+  padding: 10px 0; /* Removes extra space above */
   width: 100%;
-  position: relative;
 }
 
-/* 🔹 RESPONSIVE DESIGN 🔹 */
-@media (max-width: 1024px) {
-  .middle-row {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .column {
-    width: 90%;
-    margin-bottom: 15px;
-  }
-
-  .login-button {
-    width: 60%;
-  }
-
-  .top-row-2 {
-    font-size: 1rem;
-  }
+.admin-link {
+  font-size: 0.6rem; /* Smaller font */
+  color: #bbb; /* Light gray */
+  margin: 0; /* Ensures no extra spacing */
+  line-height: 1; /* Tightens spacing */
 }
 
-@media (max-width: 768px) {
-  .top-row {
-    flex-direction: column;
-    text-align: center;
-    padding: 5px;
-  }
-
-  .top-left, .top-right {
-    justify-content: center;
-    padding: 5px;
-  }
-
-  .top-logo, .main-logo {
-    height: 60px;
-  }
-
-  .middle-column img {
-    max-width: 90%;
-  }
-
-  .login-button {
-    font-size: 1rem;
-    width: 70%;
-  }
-
-  .top-row-2 {
-    font-size: 0.9rem;
-  }
-
-  .support-column a {
-    font-size: 1rem;
-  }
+.admin-link a {
+  text-decoration: none;
+  color: #999; /* Even subtler color */
 }
 
-@media (max-width: 480px) {
-  .welcome-back {
-    font-size: 1.2rem;
-  }
-
-  .login-button {
-    font-size: 0.9rem;
-    padding: 10px;
-    width: 80%;
-  }
-
-  .top-logo, .main-logo {
-    height: 50px;
-  }
-
-  .top-row-2 {
-    font-size: 0.8rem;
-    padding: 8px;
-  }
-
-  .support-column a {
-    font-size: 0.9rem;
-  }
+.admin-link a:hover {
+  color: #fff; /* White on hover */
 }
+

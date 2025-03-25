@@ -1,0 +1,131 @@
+/* ✅ Ensure User Name, Dropdown, and Button Are in One Row */
+.assign-role-user-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Keeps spacing balanced */
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    gap: 10px; /* Adds spacing between items */
+}
+/* ✅ Ensure Modern Look & Layout for Middle Section */
+.assign-role-middle-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    width: 90%;
+}
+
+/* ✅ Ensure Name Column Has a Fixed Width */
+.assign-role-user-name {
+    width: 200px; /* Fixes width so names don’t push dropdowns */
+    min-width: 200px;
+    max-width: 200px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Prevents text overflow */
+    display: inline-block; /* Prevents Flexbox from resizing */
+}
+
+
+
+/* ✅ Modernized Filter Box */
+.assign-role-filter-box {
+    flex: 1;
+    max-width: 30%;
+    min-width: 30%;
+    border: 1px solid #f7f4f4;
+    padding: 20px;
+    border-radius: 12px; /* Rounded corners */
+    background-color: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    transition: all 0.3s ease-in-out;
+}
+
+/* ✅ Modernized User List Box */
+.assign-role-users-container {
+    flex: 2;
+    max-height: 320px;
+    min-height: 320px;
+    max-width: 60%;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #faf7f7;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* ✅ Smooth Hover Effect */
+.assign-role-filter-box:hover,
+.assign-role-users-container:hover {
+    box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.15);
+    transform: scale(1.02); /* Slight zoom for a modern touch */
+}
+
+/* ✅ Modernized Dropdown Styling */
+.assign-role-dropdown {
+    width: 180px !important; /* Slightly wider for better UX */
+    min-width: 180px;
+    max-width: 180px;
+    padding: 10px;
+    border: 2px solid #007bff;
+    border-radius: 8px; /* Rounded corners for a modern look */
+    background-color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    appearance: none; /* Remove default browser styling */
+    transition: all 0.3s ease-in-out;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23007bff'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 30px; /* Ensures space for the arrow */
+}
+
+/* ✅ Dropdown Hover Effect */
+.assign-role-dropdown:hover {
+    border-color: #0056b3;
+    background-color: #f0f8ff; /* Light blue tint */
+}
+
+/* ✅ Dropdown Focus Effect */
+.assign-role-dropdown:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 5px rgba(0, 86, 179, 0.5);
+    outline: none;
+}
+
+/* ✅ Modern Dropdown Options */
+.assign-role-dropdown option {
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    background: #ffffff;
+    color: #333;
+}
+/* ✅ Ensures a Gap Between Title and Back Icon */
+.assign-role-users-header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 20px;
+}
+
+/* ✅ Adds Space Between the Text and the Icon */
+.assign-role-users-header {
+    margin-right: 20px; /* Creates spacing */
+}
+
+/* ✅ Ensures Back Icon Stays in Place */
+.back-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+}

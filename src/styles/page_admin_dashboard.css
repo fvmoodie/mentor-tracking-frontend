@@ -1,0 +1,138 @@
+/* General Layout */
+.page-admin-dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: #f4f4f4;
+    overflow: hidden;
+}
+
+/* Header */
+.page-admin-header {
+    background: linear-gradient(to right, #4CAF50, #2196F3);
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.page-header-left {
+    display: flex;
+    align-items: center;
+}
+
+.page-main-logo {
+    height: 80px;
+}
+
+.page-dashboard-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.page-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.page-search-bar {
+    padding: 8px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 200px;
+}
+
+.page-header-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-left: 10px;
+    color: white;
+}
+
+.page-header-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Main Content */
+.page-dashboard-content {
+    display: flex;
+    flex: 1;
+    padding: 15px;
+    gap: 15px;
+    overflow: hidden;
+}
+
+/* Left Column - Menu */
+.page-left-column-section {
+    width: 200px;
+    background: white;
+    padding: 15px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+.page-left-menu-button, .page-center-submenu-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #2196F3;
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.page-left-menu-button:hover, .page-left-menu-button.active, 
+.page-center-submenu-button:hover, .page-center-submenu-button.active {
+    background: #1976D2;
+    transform: scale(1.05);
+}
+
+/* Center Column - Submenu */
+.page-center-column-section {
+    width: 200px;
+    padding: 15px;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background: white;
+    flex-shrink: 0;
+}
+
+/* Placeholder Text */
+.page-placeholder-text {
+    font-size: 1rem;
+    color: #7a7a7a;
+    font-style: italic;
+}
+
+/* Right Column - Fixed Header & Scrollable List */
+.page-right-column-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    padding: 15px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    height: 93%;
+    overflow-y: auto;
+}
+
+/* Footer */
+.page-admin-footer {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9rem;
+    color: #555;
+    background: rgb(19, 0, 0);
+    flex-shrink: 0;
+}

@@ -1,0 +1,198 @@
+Here's a structured document detailing all the **vital information** required to **design a page** for managing the **Individuals** table. This document ensures a **consistent layout, frontend-backend interaction, and required file modifications**.  
+
+---
+
+### **📌 Document: Designing an Individuals Management Page**
+#### **1️⃣ Project Overview**
+- **Objective:** Create a **frontend page** that manages records from the **Individuals** table.
+- **Scope:**  
+  - Display **list of individuals**.  
+  - Allow users to **view, add, edit, and delete** individual records.  
+  - Ensure **layout consistency** with other pages.  
+  - Connect to the **Flask API backend** to fetch and update data.  
+
+---
+
+## **🔹 2️⃣ Database Schema (Individuals Table)**
+```sql
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| IndividualID | int          | NO   | PRI | NULL    | auto_increment |
+| FullName     | varchar(255) | NO   |     | NULL    |                |
+| DOB          | date         | YES  |     | NULL    |                |
+| BehaviorPlan | tinyint(1)   | YES  |     | NULL    |                |
+| MentorID     | int          | YES  | MUL | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+```
+- **Primary Key:** `IndividualID`
+- **Foreign Key:** `MentorID` → References `Mentors.MentorID`
+- **Constraints:**  
+  - `FullName` **is required**.  
+  - `DOB` **can be null**.  
+  - `BehaviorPlan` **stores 1 (Yes) or 0 (No)**.  
+  - `MentorID` must be a **valid** `MentorID`.
+
+---
+
+## **🔹 3️⃣ Frontend Page Layout**
+**Page Name:** `IndividualsPage.js`  
+**CSS File:** `IndividualsPage.css`  
+**Route:** `/individuals-management`  
+
+#### **📌 Layout Design**
+✅ **Three Sections (Standard Layout)**
+1. **Left Column** → List of individuals (`FullName`).  
+2. **Center Column** → Individual details (`FullName, DOB, BehaviorPlan`).  
+3. **Right Column** → Actions (Edit, View, Add).  
+
+✅ **Dynamic Layout**
+- If `layoutType = "table"` → **Two columns only** (List & Details).  
+- If `layoutType = "dashboard"` → **Three columns** (List, Details, Extra actions).  
+
+---
+
+## **🔹 4️⃣ Backend API Endpoints (Flask)**
+**📌 `app.py` (Main API Setup)**
+```python
+from flask import Flask, jsonify
+from flask_cors import CORS
+from config import app
+from routes.individuals import individuals_bp  # ✅ Import Individuals API
+
+# ✅ Enable CORS
+CORS(app, resources={r"/*": {"origins": "*"}}, allow_headers=["Content-Type", "Authorization", "UserID"], methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
+
+# ✅ Register Blueprints
+app.register_blueprint(individuals_bp)
+
+@app.route("/")
+def home():
+    return jsonify({"message": "API is running!"}), 200
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
+```
+
+---
+
+### **📌 `routes/individuals.py` (Flask API)**
+**✅ Endpoint: Get Individuals**
+```python
+@individuals_bp.route("/individuals", methods=["GET"])
+def get_individuals():
+    try:
+        conn = db_pool.get_connection()
+        cursor = conn.cursor(dictionary=True)
+
+        cursor.execute("SELECT IndividualID, FullName, DOB, BehaviorPlan, MentorID FROM Individuals")
+        individuals = cursor.fetchall()
+
+        return jsonify({"individuals": individuals}), 200
+    except Exception as e:
+        return jsonify({"error": {"message": "Database error", "details": str(e)}}), 500
+    finally:
+        cursor.close()
+        conn.close()
+```
+
+**✅ Endpoint: Add New Individual**
+```python
+@individuals_bp.route("/individuals", methods=["POST"])
+def add_individual():
+    data = request.get_json()
+    user_id = request.headers.get("UserID") or 3  # ✅ Hardcoded UserID for testing
+
+    full_name = data.get("FullName", "").strip()
+    dob = data.get("DOB", None)
+    behavior_plan = data.get("BehaviorPlan", 0)
+
+    if not full_name:
+        return jsonify({"error": {"message": "Full Name is required"}}), 400
+
+    try:
+        conn = db_pool.get_connection()
+        cursor = conn.cursor()
+
+        cursor.execute(
+            "INSERT INTO Individuals (FullName, DOB, BehaviorPlan, MentorID) VALUES (%s, %s, %s, %s)",
+            (full_name, dob, behavior_plan, user_id),
+        )
+        conn.commit()
+
+        return jsonify({"message": "Individual added successfully!"}), 201
+    except Exception as e:
+        return jsonify({"error": {"message": "Database error", "details": str(e)}}), 500
+    finally:
+        cursor.close()
+        conn.close()
+```
+
+---
+
+## **🔹 5️⃣ Frontend API Calls (`IndividualsPage.js`)**
+**✅ Fetch Individuals (Using `fetch()`, Not Axios)**
+```js
+useEffect(() => {
+  fetch("http://167.71.169.127:5000/api/individuals", {
+    method: "GET",
+    headers: { "Content-Type": "application/json", "UserID": "3" } // Hardcoded for testing
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.individuals) {
+      setIndividuals(data.individuals);
+    }
+  })
+  .catch(error => console.error("❌ Error fetching individuals:", error));
+}, []);
+```
+
+**✅ Add New Individual**
+```js
+const handleSaveIndividual = () => {
+  const newIndividual = { FullName: "John Doe", DOB: "1992-04-15", BehaviorPlan: 1 };
+
+  fetch("http://167.71.169.127:5000/api/individuals", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "UserID": "3" }, 
+    body: JSON.stringify(newIndividual)
+  })
+  .then(response => response.json())
+  .then(data => console.log("✅ Individual added:", data))
+  .catch(error => console.error("❌ Error adding individual:", error));
+};
+```
+
+---
+
+## **🔹 6️⃣ Required File Modifications**
+| **File** | **Changes Required** |
+|----------|----------------------|
+| `app.py` | Register `individuals_bp`, update CORS |
+| `routes/individuals.py` | Create GET, POST API routes |
+| `IndividualsPage.js` | Implement API calls using `fetch()` |
+| `IndividualsPage.css` | Ensure layout consistency |
+
+---
+
+## **🔹 7️⃣ Testing Strategy**
+✅ **Frontend**
+- Test fetching individuals (`GET` request).
+- Test adding a new individual (`POST` request).
+- Verify layout consistency.
+
+✅ **Backend**
+- Check API connectivity (`curl -X GET http://127.0.0.1:5000/api/individuals`).
+- Ensure database constraints (Foreign Key checks).
+
+✅ **Deployment**
+- Restart API (`pm2 restart mentor_api` or `flask run`).
+- Test frontend connection (`http://localhost:3000`).
+
+---
+
+## **🚀 Conclusion**
+This document provides **everything needed** to design and integrate the **IndividualsPage** with a **consistent layout** and **working backend API**.  
+
+Would you like me to generate the final **IndividualsPage.js and CSS** with all the updates? 🚀

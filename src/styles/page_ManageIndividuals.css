@@ -1,0 +1,202 @@
+/* Container */
+.page-individual-management {
+  background: white;
+  padding: 20px;
+  height: 100%;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Header */
+.page-individual-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.page-individual-header h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Add Button */
+.page-add-btn {
+  background-color: #2196F3;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.page-add-btn:hover {
+  background-color: #1976D2;
+  transform: scale(1.05);
+}
+
+/* Table Wrapper */
+.page-individual-table-wrapper {
+  overflow-y: auto;
+  max-height: 400px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Table */
+.page-individual-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.page-individual-table thead th {
+  position: sticky;
+  top: 0;
+  background-color: #f4f4f4;
+  padding: 10px;
+  border-bottom: 2px solid #ddd;
+  text-align: left;
+  z-index: 2;
+}
+
+.page-individual-table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.page-individual-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Edit Icon Button */
+.page-edit-individual-button {
+  background-color: #FFC107;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.page-edit-individual-button:hover {
+  background-color: #FFA000;
+  transform: scale(1.05);
+}
+
+/* Expanded Edit Form Section */
+.page-individual-edit-section {
+  background-color: #fefefe;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Input Group */
+.page-input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-input-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Input Field */
+.input-field {
+  padding: 8px;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 70%; /* Reduced to 70% width */
+}
+
+.page-checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.page-checkbox-group label {
+  font-weight: bold;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5ch; /* 1 character space */
+}
+
+.page-checkbox-group input[type="checkbox"] {
+  margin: 0;
+}
+
+.individual-checkbox-group {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.individual-checkbox-group input[type="checkbox"] {
+  margin-right: 0.5ch; /* 1 character space between box and text */
+  width: auto;
+}
+
+
+/* Button Group */
+.page-button-group {
+  display: flex;
+  flex-direction: column; /* Stack Save and Cancel vertically */
+  gap: 10px;
+  margin-top: 10px;
+  width: fit-content;
+}
+
+/* Save Button */
+.page-save-individual-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.page-save-individual-button:hover {
+  background-color: #388E3C;
+  transform: scale(1.05);
+}
+
+/* Cancel Button */
+.page-cancel-individual-button {
+  background-color: #FF5722;
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.page-cancel-individual-button:hover {
+  background-color: #E64A19;
+  transform: scale(1.05);
+}

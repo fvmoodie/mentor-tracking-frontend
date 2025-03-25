@@ -1,0 +1,110 @@
+/* Mentor Management Container */
+.page-mentor-management {
+    background: white;
+    padding: 15px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+
+/* Fixed Header Inside Mentor Management */
+.page-mentor-management h3 {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* Mentor Input Container */
+.page-mentor-input-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Mentor List - Scrollable */
+.page-mentor-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* Mentor List Items */
+.page-mentor-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Add Mentor Button */
+.page-add-mentor-button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 50%;
+    text-align: center;
+}
+
+.page-add-mentor-button:hover {
+    background: #388E3C;
+    transform: scale(1.05);
+}
+
+/* Save, Cancel, and Edit Buttons */
+.page-save-mentor-button, .page-cancel-mentor-button, .page-edit-mentor-button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: all 0.3s;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-left: 5px;
+}
+
+/* Edit Button */
+.page-edit-mentor-button {
+    background: #FFC107;
+}
+
+.page-edit-mentor-button:hover {
+    background: #FFA000;
+}
+
+/* Save Button */
+.page-save-mentor-button:hover {
+    background: #388E3C;
+    transform: scale(1.05);
+}
+
+/* Cancel Button */
+.page-cancel-mentor-button {
+    background: #FF5722;
+}
+
+.page-cancel-mentor-button:hover {
+    background: #E64A19;
+    transform: scale(1.05);
+}
+
+/* Input Field for Editing */
+.page-mentor-input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Spacing Between Input and Buttons */
+.page-mentor-edit-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
