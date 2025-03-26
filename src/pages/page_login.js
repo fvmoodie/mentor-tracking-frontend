@@ -24,7 +24,7 @@ const PageLogin = () => {
     setErrorMessage("");
 
     try {
-      const response = await fetch("http://167.71.169.127:5000/login", {
+      const response = await fetch("https://notesvia.duckdns.org/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(credentials),
