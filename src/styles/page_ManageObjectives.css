@@ -1,0 +1,153 @@
+/* Container */
+.page-objective-management {
+    background: white;
+    padding: 20px;
+    height: 100%;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  /* Header */
+  .page-objective-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .page-objective-header h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  /* Add Button */
+  .page-add-objective-btn {
+    background-color: #9C27B0;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .page-add-objective-btn:hover {
+    background-color: #7B1FA2;
+    transform: scale(1.05);
+  }
+  
+  /* Table Wrapper */
+  .page-objective-table-wrapper {
+    overflow-y: auto;
+    max-height: 400px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  /* Table */
+  .page-objective-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  
+  .page-objective-table thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-bottom: 2px solid #ddd;
+    text-align: left;
+    z-index: 2;
+  }
+  
+  .page-objective-table td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .page-objective-table tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  /* Edit Section */
+  .page-objective-edit-section {
+    background-color: #fefefe;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  /* Input Group */
+  .page-objective-input-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .page-objective-input-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  /* Input Field */
+  .objective-input-field {
+    padding: 8px;
+    font-size: 0.95rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 70%;
+  }
+  
+  /* Button Group */
+  .page-objective-button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    width: fit-content;
+  }
+  
+  /* Save Button */
+  .page-save-objective-button {
+    background-color: #2196F3;
+    color: white;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .page-save-objective-button:hover {
+    background-color: #1976D2;
+    transform: scale(1.05);
+  }
+  
+  /* Cancel Button */
+  .page-cancel-objective-button {
+    background-color: #FF5722;
+    color: white;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .page-cancel-objective-button:hover {
+    background-color: #E64A19;
+    transform: scale(1.05);
+  }

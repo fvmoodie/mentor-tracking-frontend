@@ -1,0 +1,32 @@
+.header-bar {
+    height: 60px;
+    background-color: #4CAF50;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+  
+  .header-logo img {
+    height: 40px;
+  }
+  
+  .header-welcome {
+    font-size: 1.1rem;
+  }
+  
+  .header-logout {
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .header-logout:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  

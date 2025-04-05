@@ -1,0 +1,154 @@
+/* page_manage_objectives.css */
+
+.page-manage-objectives-container {
+  padding: 20px;
+  background: #f4f4f4;
+  min-height: 100vh;
+  font-family: sans-serif;
+}
+
+.page-manage-objectives-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.page-manage-objectives-toast {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.page-manage-objectives-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 15px;
+  background: #e8f5e9;
+  border: 1px dashed #81c784;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.page-manage-objectives-form input[type="text"],
+.page-manage-objectives-form input[type="date"] {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  flex: 1;
+  min-width: 150px;
+}
+
+.page-manage-objectives-form button {
+  background-color: #4caf50;
+  color: white;
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.page-manage-objectives-form button:hover {
+  background-color: #388e3c;
+  transform: scale(1.05);
+}
+
+.page-manage-objectives-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.page-manage-objectives-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 15px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  align-items: center;
+}
+
+.page-manage-objectives-row input[type="text"],
+.page-manage-objectives-row input[type="date"] {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  flex: 1;
+  min-width: 120px;
+}
+
+.page-manage-objectives-row button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.page-manage-objectives-row button:hover {
+  transform: scale(1.05);
+}
+
+.page-manage-objectives-row button:nth-of-type(1) {
+  background-color: #2196f3;
+}
+
+.page-manage-objectives-row button:nth-of-type(1):hover {
+  background-color: #1976d2;
+}
+
+.page-manage-objectives-row button:nth-of-type(2) {
+  background-color: #f44336;
+}
+
+.page-manage-objectives-row button:nth-of-type(2):hover {
+  background-color: #d32f2f;
+}
+
+@media (max-width: 768px) {
+  .page-manage-objectives-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .page-manage-objectives-form input,
+  .page-manage-objectives-form button {
+    width: 100%;
+  }
+
+  .page-manage-objectives-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .page-manage-objectives-row input,
+  .page-manage-objectives-row button {
+    width: 100%;
+  }
+}
+
+/* Custom width overrides */
+.page-manage-objectives-form input.objective-code {
+  flex: 0 0 80px;
+}
+
+.page-manage-objectives-form input.objective-description {
+  flex: 2;
+  min-width: 300px;
+}
+
+.page-manage-objectives-form input.objective-date {
+  flex: 0 0 120px;
+}

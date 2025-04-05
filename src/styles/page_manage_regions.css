@@ -1,0 +1,113 @@
+.page-manage-regions-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #f4f4f4;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .page-manage-regions-title {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+  
+  .page-manage-regions-toast {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 0.75rem;
+    text-align: center;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+  
+  .page-manage-regions-add {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1rem;
+  }
+  
+  .page-manage-regions-add input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .page-manage-regions-add-btn {
+    padding: 0.5rem 1rem;
+    background-color: #2196f3;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .page-manage-regions-add-btn:hover {
+    background-color: #1976d2;
+  }
+  
+  .page-manage-regions-spinner {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  .page-manage-regions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .page-manage-regions-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .page-manage-regions-row input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .page-manage-regions-save-btn,
+  .page-manage-regions-delete-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .page-manage-regions-save-btn {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .page-manage-regions-save-btn:hover {
+    background-color: #388e3c;
+  }
+  
+  .page-manage-regions-delete-btn {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .page-manage-regions-delete-btn:hover {
+    background-color: #d32f2f;
+  }
+  .page-manage-regions-toast.success {
+    background-color: #4caf50; /* green */
+  }
+  
+  .page-manage-regions-toast.error {
+    background-color: #f44336; /* red */
+  }
+  

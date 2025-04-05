@@ -1,0 +1,153 @@
+/* Container */
+.page-goal-management {
+  background: white;
+  padding: 20px;
+  height: 100%;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Header */
+.page-goal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.page-goal-header h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Add Button */
+.page-add-goal-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.page-add-goal-btn:hover {
+  background-color: #388E3C;
+  transform: scale(1.05);
+}
+
+/* Table Wrapper */
+.page-goal-table-wrapper {
+  overflow-y: auto;
+  max-height: 400px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Table */
+.page-goal-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.page-goal-table thead th {
+  position: sticky;
+  top: 0;
+  background-color: #f4f4f4;
+  padding: 10px;
+  border-bottom: 2px solid #ddd;
+  text-align: left;
+  z-index: 2;
+}
+
+.page-goal-table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.page-goal-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Edit Section */
+.page-goal-edit-section {
+  background-color: #fefefe;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Input Group */
+.page-goal-input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-goal-input-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Input Field */
+.goal-input-field {
+  padding: 8px;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 70%;
+}
+
+/* Button Group */
+.page-goal-button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+  width: fit-content;
+}
+
+/* Save Button */
+.page-save-goal-button {
+  background-color: #2196F3;
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.page-save-goal-button:hover {
+  background-color: #1976D2;
+  transform: scale(1.05);
+}
+
+/* Cancel Button */
+.page-cancel-goal-button {
+  background-color: #FF5722;
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.page-cancel-goal-button:hover {
+  background-color: #E64A19;
+  transform: scale(1.05);
+}

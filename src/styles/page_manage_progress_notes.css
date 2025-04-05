@@ -1,0 +1,196 @@
+/* page_manage_progress_notes.css */
+
+.page-manage-progress-notes-container {
+    padding: 20px;
+    background: #f4f4f4;
+    min-height: 100vh;
+    font-family: sans-serif;
+  }
+  
+  .page-manage-progress-notes-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 15px;
+    background: #e3f2fd;
+    border: 1px dashed #64b5f6;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    align-items: center;
+  }
+  
+  .page-manage-progress-notes-form input[type="text"],
+  .page-manage-progress-notes-form input[type="date"],
+  .page-manage-progress-notes-form select,
+  .page-manage-progress-notes-form textarea {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    flex: 1;
+    min-width: 150px;
+  }
+  
+  .page-manage-progress-notes-form textarea {
+    flex: 1 1 100%;
+    min-width: 250px;
+    resize: vertical;
+    min-height: 60px;
+  }
+  
+  .page-manage-progress-notes-form button,
+  .page-manage-progress-notes-voice-btn {
+    background-color: #2196f3;
+    color: white;
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .page-manage-progress-notes-form button:hover,
+  .page-manage-progress-notes-voice-btn:hover {
+    background-color: #1976d2;
+    transform: scale(1.05);
+  }
+  
+  .page-manage-progress-notes-toast {
+    background-color: #323232;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    animation: fadeinout 3s;
+  }
+  
+  @keyframes fadeinout {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
+  .page-manage-progress-notes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .page-manage-progress-notes-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 15px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    align-items: center;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .page-manage-progress-notes-row input[type="text"],
+  .page-manage-progress-notes-row input[type="date"] {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    flex: 1;
+    min-width: 120px;
+  }
+  
+  .page-manage-progress-notes-row button,
+  .page-manage-progress-notes-voice-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    background-color: #2196f3;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .page-manage-progress-notes-row button:hover,
+  .page-manage-progress-notes-voice-btn:hover {
+    background-color: #1976d2;
+    transform: scale(1.05);
+  }
+  
+  .page-manage-progress-notes-user-label {
+    font-size: 13px;
+    color: #555;
+    margin-left: auto;
+  }
+  
+  .page-manage-progress-notes-textarea {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    min-height: 10px;
+    resize: vertical;
+    flex: 1 1 100%;
+    min-width: 250px;
+  }
+  
+  .page-manage-progress-notes-row.highlighted {
+    animation: highlightFlash 1s ease-in-out;
+    border: 2px solid #4caf50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
+  }
+  
+  @keyframes highlightFlash {
+    0% {
+      background-color: #f5e8e8;
+    }
+    100% {
+      background-color: white;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .page-manage-progress-notes-form {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .page-manage-progress-notes-form input,
+    .page-manage-progress-notes-form button,
+    .page-manage-progress-notes-form select,
+    .page-manage-progress-notes-form textarea,
+    .page-manage-progress-notes-row input,
+    .page-manage-progress-notes-row button,
+    .page-manage-progress-notes-row .page-manage-progress-notes-textarea {
+      width: 100%;
+    }
+  
+    .page-manage-progress-notes-row {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+  
+  .page-manage-progress-notes-voice-btn {
+    background-color: #4caf50;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 50%;
+    font-size: 16px;
+    line-height: 1;
+    height: 34px;
+    width: 34px;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 4px;
+    transition: transform 0.2s ease;
+  }
+  
+  .page-manage-progress-notes-voice-btn:hover {
+    background-color: #388e3c;
+    transform: scale(1.1);
+  }
+  

@@ -1,0 +1,133 @@
+.page-manage-objective-progress-container {
+    padding: 20px;
+    background: #f4f4f4;
+    min-height: 100vh;
+    font-family: sans-serif;
+  }
+  
+  .page-manage-objective-progress-heading {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .page-manage-objective-progress-toast {
+    background-color: #323232;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    animation: fadeinout 3s;
+  }
+  
+  @keyframes fadeinout {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
+  .page-manage-objective-progress-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    background: #e3f2fd;
+    border: 1px dashed #64b5f6;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .page-manage-objective-progress-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .page-manage-objective-progress-row-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .page-manage-objective-progress-form select,
+  .page-manage-objective-progress-form input[type="date"],
+  .page-manage-objective-progress-form textarea {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    flex: 1;
+    min-width: 150px;
+    box-sizing: border-box;
+  }
+  
+  .page-manage-objective-progress-form textarea {
+    flex: 1 1 100%;
+    min-width: 250px;
+    resize: vertical;
+    min-height: 60px;
+  }
+  
+  .page-manage-objective-progress-description {
+    background-color: #fff8e1;
+    padding: 10px;
+    border-left: 4px solid #ffd54f;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .page-objective-progress-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: flex-start;
+  }
+  
+  .page-objective-progress-btn {
+    background-color: #2196f3;
+    color: white;
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .page-objective-progress-btn:hover {
+    background-color: #1976d2;
+    transform: scale(1.05);
+  }
+  
+  .page-objective-progress-btn.delete {
+    background-color: #f44336;
+  }
+  
+  .page-objective-progress-btn.delete:hover {
+    background-color: #d32f2f;
+    transform: scale(1.05);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .page-manage-objective-progress-row {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .page-objective-progress-actions {
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .page-objective-progress-btn {
+      width: 100%;
+    }
+  }
+  

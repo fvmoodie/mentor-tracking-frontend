@@ -1,0 +1,40 @@
+
+// File: styles/page_manage_users.css
+.page-manage-users-container {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.page-manage-users-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.page-manage-users-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.page-manage-users-row input,
+.page-manage-users-row select {
+  padding: 8px;
+  font-size: 14px;
+  flex: 1;
+}
+
+.page-manage-users-row button {
+  padding: 8px 12px;
+  font-size: 14px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.page-manage-users-row button:hover {
+  background-color: #1976d2;
+}

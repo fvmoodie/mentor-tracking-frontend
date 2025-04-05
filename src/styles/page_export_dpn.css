@@ -1,0 +1,58 @@
+.page-export-dpn-container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 24px;
+    background-color: #f4f4f4;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .page-export-dpn-heading {
+    font-size: 24px;
+    margin-bottom: 24px;
+    color: #333;
+    text-align: center;
+  }
+  
+  .page-export-dpn-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 20px;
+    justify-content: center;
+  }
+  
+  .page-export-dpn-row select,
+  .page-export-dpn-row input[type="month"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    min-width: 220px;
+    font-size: 16px;
+    background-color: #fff;
+  }
+  
+  .page-export-dpn-btn {
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .page-export-dpn-btn:hover {
+    background-color: #1976D2;
+    transform: scale(1.03);
+  }
+  
+  .page-export-dpn-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+  }
+  

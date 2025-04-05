@@ -1,38 +1,62 @@
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
-import PageLogin from "./pages/page_login";
-import PageRegister from "./pages/page_register";
-import PageAdminDashboard from "./pages/page_admin_dashboard";
-import PageUserDashboard from "./pages/page_user_dashboard";
-import PageManageRoles from "./pages/page_ManageRoles";
-import PageManageRegions from "./pages/page_ManageRegions";
-import PageManageUsers from "./pages/page_ManageUsers";
-import PageManageIndividuals from "./pages/page_ManageIndividuals";
-import PageMentorIndividuals from "./pages/page_MentorIndividuals";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// ✅ Forgot Password Flow Pages (lowercase file names as preferred)
-import PageRequestReset from "./pages/page_requestreset";
-import PageVerifyCode from "./pages/page_verifycode";
-import PageResetPassword from "./pages/page_resetpassword";
+// Auth Pages
+import PageLogin from "./pages/page_login";
+import PageSignup from "./pages/page_signup";
+import PageForgotPassword from "./pages/page_forgot_password";
+import PageResetPassword from "./pages/page_reset_password";
+
+// Dashboard & Management Pages
+import PageDashboard from "./pages/page_dashboard";
+import PageManageUsers from "./pages/page_manage_users";
+import PageManageRoles from "./pages/page_manage_roles";
+import PageManageRegions from "./pages/page_manage_regions";
+import PageManageIndividuals from "./pages/page_manage_individuals";
+import PageManageGoals from "./pages/page_manage_goals";
+import PageManageObjectives from "./pages/page_manage_objectives";
+import PageManageProgressNotes from "./pages/page_manage_progress_notes";
+import PageManageObjectiveProgress from "./pages/page_manage_objective_progress";
+import PageExportDPN from "./pages/page_export_dpn";
+import PageExportODS from "./pages/page_export_ods"; // ✅ ODS Report Page
+
+// Placeholder Pages
+const Objectives = () => <h2>Objectives</h2>;
+const DailyProgress = () => <h2>Daily Progress</h2>;
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navigate to="/login" replace />} />
+        {/* Auth Pages */}
+        <Route path="/" element={<PageLogin />} />
         <Route path="/login" element={<PageLogin />} />
-        <Route path="/register" element={<PageRegister />} />
-        <Route path="/admin-dashboard" element={<PageAdminDashboard />} />
-        <Route path="/user-dashboard" element={<PageUserDashboard />} />
-        <Route path="/admin-dashboard/manage-roles" element={<PageManageRoles />} />
-        <Route path="/admin-dashboard/manage-regions" element={<PageManageRegions />} />
-        <Route path="/admin-dashboard/manage-users" element={<PageManageUsers />} />
-        <Route path="/admin-dashboard/manage-individuals" element={<PageManageIndividuals />} />
-        <Route path="/mentor-dashboard/individuals" element={<PageMentorIndividuals />} />
-
-        {/* ✅ Forgot Password Flow */}
-        <Route path="/forgot-password" element={<PageRequestReset />} />
-        <Route path="/verify-code" element={<PageVerifyCode />} />
+        <Route path="/register" element={<PageSignup />} />
+        <Route path="/forgot-password" element={<PageForgotPassword />} />
         <Route path="/reset-password" element={<PageResetPassword />} />
+
+        {/* Admin Dashboard */}
+        <Route path="/admin-dashboard" element={<PageDashboard />}>
+          <Route path="manage-users" element={<PageManageUsers />} />
+          <Route path="manage-roles" element={<PageManageRoles />} />
+          <Route path="manage-regions" element={<PageManageRegions />} />
+          <Route path="individuals" element={<PageManageIndividuals />} />
+          <Route path="goals" element={<PageManageGoals />} />
+          <Route path="objectives" element={<PageManageObjectives />} />
+          <Route path="daily-progress" element={<PageManageProgressNotes />} />
+          <Route path="objective-progress" element={<PageManageObjectiveProgress />} />
+          <Route path="dpn-report" element={<PageExportDPN />} />
+          <Route path="ods-report" element={<PageExportODS />} /> {/* ✅ New ODS Report Page */}
+        </Route>
+
+        {/* User Dashboard */}
+        <Route path="/user-dashboard" element={<PageDashboard />}>
+          <Route path="objectives" element={<Objectives />} />
+          <Route path="daily-progress" element={<PageManageProgressNotes />} />
+          <Route path="objective-progress" element={<PageManageObjectiveProgress />} />
+          <Route path="dpn-report" element={<PageExportDPN />} />
+          <Route path="ods-report" element={<PageExportODS />} /> {/* ✅ New ODS Report Page */}
+        </Route>
       </Routes>
     </Router>
   );

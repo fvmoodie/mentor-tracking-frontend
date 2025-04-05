@@ -1,56 +1,60 @@
-/* 🌟 Modern Login Screen Styling */
-.login-container {
+/* 🌟 Login Page Styling (Scoped as page-login-*) */
+.page-login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  padding: 1rem;
   background: linear-gradient(135deg, #4CAF50, #2196F3);
 }
 
-.login-card {
+.page-login-card {
   background: white;
   padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
   text-align: center;
-  width: 350px;
+  width: 100%;
+  max-width: 400px;
   transition: transform 0.3s ease;
 }
 
-.login-card:hover {
-  transform: translateY(-5px);
+.page-login-card:hover {
+  transform: translateY(-4px);
 }
 
-h2 {
+.page-login-card h2 {
   color: #333;
   font-size: 1.8rem;
+  margin-bottom: 0.2rem;
 }
 
-.login-subtext {
+.page-login-subtext {
   font-size: 1rem;
   color: #666;
-  margin-bottom: 20px;
+  margin-bottom: 1.2rem;
 }
 
-.login-form {
+.page-login-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 1rem;
 }
 
-.input-group {
+.page-login-input-group {
   position: relative;
   display: flex;
   align-items: center;
 }
 
-.input-icon {
+.page-login-input-icon {
   position: absolute;
   left: 12px;
   color: #888;
+  font-size: 1rem;
 }
 
-input {
+.page-login-input-group input {
   width: 100%;
   padding: 12px 12px 12px 40px;
   font-size: 1rem;
@@ -60,39 +64,61 @@ input {
   transition: border-color 0.3s ease;
 }
 
-input:focus {
+.page-login-input-group input:focus {
   border-color: #4CAF50;
 }
 
-.login-button {
+.page-login-button {
   background: #4CAF50;
   color: white;
   padding: 12px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.login-button:hover {
+.page-login-button:hover {
   background: #45A049;
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
-.login-links {
+.page-login-error-message {
+  color: red;
+  font-size: 0.95rem;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.page-login-links {
   display: flex;
   justify-content: space-between;
   font-size: 0.9rem;
-  margin-top: 10px;
+  margin-top: 0.5rem;
 }
 
-.login-links a {
+.page-login-links a {
   color: #2196F3;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.login-links a:hover {
+.page-login-links a:hover {
   color: #1976D2;
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+  .page-login-card {
+    padding: 20px;
+  }
+
+  .page-login-button {
+    font-size: 1rem;
+  }
+
+  .page-login-input-icon {
+    left: 10px;
+  }
 }

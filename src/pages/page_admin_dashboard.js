@@ -6,6 +6,8 @@ import Page_ManageRoles from "./page_ManageRoles";
 import Page_ManageRegions from "./page_ManageRegions";
 import Page_ManageUsers from "./page_ManageUsers";
 import Page_ManageIndividuals from './page_ManageIndividuals';
+import Page_ManageGoals from './page_ManageGoals';
+import Page_ManageObjectives from './page_ManageObjectives';
 
 const PageAdminDashboard = () => {
   const [selectedMenu, setSelectedMenu] = useState(null);
@@ -54,12 +56,17 @@ const PageAdminDashboard = () => {
                     {subItem}
                   </button>
                 ))}
-                {selectedMenu === "Individual Management" && ["Manage Individuals"].map((subItem) => (
-                  <button key={subItem} className={`page-center-submenu-button ${selectedSubMenu === subItem ? "active" : ""}`} 
-                    onClick={() => setSelectedSubMenu(subItem)}>
-                    {subItem}
-                  </button>
-                ))}
+                {selectedMenu === "Individual Management" && 
+                  ["Manage Individuals", "Manage Goals", "Manage Objectives"].map((subItem) => (
+                    <button 
+                      key={subItem} 
+                      className={`page-center-submenu-button ${selectedSubMenu === subItem ? "active" : ""}`} 
+                      onClick={() => setSelectedSubMenu(subItem)}
+                    >
+                      {subItem}
+                    </button>
+                  ))
+                }
               </div>
             </>
           ) : (
@@ -71,9 +78,10 @@ const PageAdminDashboard = () => {
         <aside className={`page-right-column-section ${selectedSubMenu ? "active" : ""}`}>
           {selectedSubMenu === "Manage Roles" && <Page_ManageRoles API_URL={API_URL} />}
           {selectedSubMenu === "Manage Regions" && <Page_ManageRegions API_URL={API_URL} />}
-          {selectedSubMenu === "Manage Users" && <Page_ManageUsers API_URL={API_URL} />} {/* ✅ Updated */}
+          {selectedSubMenu === "Manage Users" && <Page_ManageUsers API_URL={API_URL} />}
           {selectedSubMenu === "Manage Individuals" && <Page_ManageIndividuals API_URL={API_URL} />}
-
+          {selectedSubMenu === "Manage Goals" && <Page_ManageGoals API_URL={API_URL} />}
+          {selectedSubMenu === "Manage Objectives" && <Page_ManageObjectives API_URL={API_URL} />}
         </aside>
       </div>
 

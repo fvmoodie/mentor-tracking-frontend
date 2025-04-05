@@ -1,0 +1,112 @@
+/* page_manage_individuals.css */
+.page-manage-individuals-container {
+  padding: 20px;
+  background: #f4f4f4;
+  min-height: 100vh;
+  font-family: sans-serif;
+}
+
+.page-manage-individuals-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.page-manage-individuals-toast {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.page-manage-individuals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.page-manage-individuals-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 15px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  align-items: center;
+}
+
+.page-manage-individuals-row input[type="text"],
+.page-manage-individuals-row input[type="date"],
+.page-manage-individuals-row select {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  flex: 1;
+  min-width: 150px;
+}
+
+.page-manage-individuals-row label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 6px;
+}
+
+.page-manage-individuals-row button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.page-manage-individuals-save-btn {
+  background-color: #2196f3;
+}
+
+.page-manage-individuals-save-btn:hover {
+  background-color: #1976d2;
+  transform: scale(1.05);
+}
+
+.page-manage-individuals-archive-btn {
+  background-color: #f44336;
+}
+
+.page-manage-individuals-archive-btn:hover {
+  background-color: #d32f2f;
+  transform: scale(1.05);
+}
+
+/* 🔹 New Individual Add Section Styling */
+.page-manage-individuals-row.new-row {
+  background-color: #e8f5e9;
+  border: 1px dashed #81c784;
+}
+
+.page-manage-individuals-row.new-row button {
+  background-color: #4caf50;
+}
+
+.page-manage-individuals-row.new-row button:hover {
+  background-color: #388e3c;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .page-manage-individuals-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .page-manage-individuals-row input,
+  .page-manage-individuals-row select {
+    width: 100%;
+  }
+}

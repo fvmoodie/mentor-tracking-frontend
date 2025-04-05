@@ -1,0 +1,12 @@
+.page-manage-roles-readonly-row {
+  padding: 12px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  margin: 10px 0;
+  cursor: help;
+  transition: background-color 0.3s ease;
+}
+
+.page-manage-roles-readonly-row:hover {
+  background-color: #e0f7fa;
+}
