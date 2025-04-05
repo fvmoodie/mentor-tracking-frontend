@@ -128,7 +128,7 @@ const PageManageIndividuals = () => {
   };
 
   const handleAdd = async () => {
-    const { name, region_id, date_of_birth } = newIndividual;
+    const { name, region_id} = newIndividual;
     if (!name || !region_id) {
       showToast("Name and region are required");
       return;

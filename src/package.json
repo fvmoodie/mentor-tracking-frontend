@@ -19,9 +19,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "build": "craco build --max_old_space_size=4096"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -42,11 +42,9 @@
     ]
   },
   "devDependencies": {
-    "@craco/craco": "^7.1.0",
     "autoprefixer": "^10.4.20",
     "gh-pages": "^6.3.0",
-    "postcss": "^8.5.3",
-    "string-replace-loader": "^3.1.0"
+    "postcss": "^8.5.3"
   },
   "overrides": {
     "tailwindcss": "^4.0.12"

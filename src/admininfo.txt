@@ -1,0 +1,188 @@
+Username: "Admin"
+Email: "admin@example.com"
+Password: "Admin123!" (hashed for security)
+
+
+curl -X GET "http://127.0.0.1:5000/api/individuals" \
+     -H "Authorization: Bearer 
+yJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0MTk1Mjc1MSwianRpIjoiYzY3ZDdjZGEtNmM4NC00MWU5LWE0MTAtZjc2NGZmNGEyY2U5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImFkbWluQGV4YW1wbGUuY29tIiwibmJmIjoxNzQxOTUyNzUxLCJjc3JmIjoiYjQ3OWM3MDgtOTFlYy00YjdkLTg1ZmUtNmRkMDk5ODE5YThmIiwiZXhwIjoxNzQxOTU2MzUxfQ.XDgPIFBPUMlZ_yx52eFD6ZzmcXkNZtLmKTbASxqK0KM"
+
+
+
+from routes.users import users_bp
+from routes.register import register_bp
+from routes.individuals import individuals_bp
+import logging
+
+# ✅ Enable logging to a file for debugging
+logging.basicConfig(filename='/var/www/mentor_api/flask.log',
+                    level=logging.DEBUG,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
+# ✅ Enable CORS globally (if not already enabled in `config.py`)
+CORS(app, resources={r"/*": {"origins": "*"}}, allow_headers=["Content-Type", "Authorization"], methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"])
+
+# ✅ Register API routes
+app.register_blueprint(regions_bp)
+app.register_blueprint(users_bp)
+app.register_blueprint(register_bp)
+app.register_blueprint(individuals_bp)
+@app.route("/")
+def home():
+    logger.info("✅ API Health Check: Running successfully!")
+    return jsonify({"message": "API is running!"}), 200
+
+if __name__ == "__main__":
+    logger.info("🚀 Starting Flask API...")
+    app.run(host="0.0.0.0", port=5000, debug=True)
+
+root@ubuntu-s-1vcpu-1gb-amd-nyc3-01:/var/www/mentor_api#
+
+
+
+root@ubuntu-s-1vcpu-1gb-amd-nyc3-01:/var/www/mentor_api/routes# root@ubuntu-s-1vcpu-1gb-amd-nyc3-01:/var/www/mentor_api/routes# cat users.py
+from flask import Blueprint, request, jsonify
+from flask_cors import cross_origin
+from config import db_pool
+
+users_bp = Blueprint("users", __name__)
+
+@users_bp.route("/check-email", methods=["POST", "OPTIONS"])
+@cross_origin()
+def check_email():
+    if request.method == "OPTIONS":
+        response = jsonify({"message": "CORS preflight request successful"})
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        response.headers.add("Access-Control-Allow-Methods", "POST, OPTIONS")
+        response.headers.add("Access-Control-Allow-Headers", "Content-Type, Authorization")
+        return response, 200
+
+    try:
+        data = request.get_json()
+        if not data or "email" not in data:
+            return jsonify({"error": "Email is required"}), 400
+
+        conn = db_pool.get_connection()
+        cursor = conn.cursor()
+
+        # 🔹 Check if the email already exists
+        cursor.execute("SELECT UserID FROM Users WHERE Email = %s", (data["email"],))
+        user = cursor.fetchone()
+
+        if user:
+            return jsonify({"exists": True, "message": "Email already registered"}), 200
+        else:
+            return jsonify({"exists": False, "message": "Email available"}), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+    finally:
+        cursor.close()
+        conn.close()
+
+root@ubuntu-s-1vcpu-1gb-amd-nyc3-01:/var/www/mentor_api/routes#
+
+
+
+
+root@ubuntu-s-1vcpu-1gb-amd-nyc3-01:/var/www/mentor_api/routes# root@ubuntu-s-1vcpu-1gb-amd-nyc3-01:/var/www/mentor_api/routes# cat register.py
+from flask import Blueprint, request, jsonify
+from flask_cors import cross_origin
+from config import db_pool
+
+register_bp = Blueprint("register", __name__)
+
+@register_bp.route("/register", methods=["POST"])
+@cross_origin()
+def register():
+    conn = None
+    cursor = None
+    try:
+        data = request.get_json()
+        if not data or "fullName" not in data or "email" not in data or "password" not in data:
+            return jsonify({"error": "Missing required fields"}), 400
+
+        conn = db_pool.get_connection()
+        cursor = conn.cursor()
+
+        # ✅ Call stored procedure
+        cursor.callproc('RegisterUser', (data["fullName"], data["email"], data["password"], data.get("role", None), "@message"))
+
+        # ✅ Fetch output message
+        cursor.execute("SELECT @message;")
+        message = cursor.fetchone()[0]
+
+        conn.commit()
+
+        if "exists" in message:
+            return jsonify({"error": message}), 409  # Conflict: Email already exists
+
+        return jsonify({"message": message}), 201  # Success
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
+
+root@ubuntu-s-1vcpu-1gb-amd-nyc3-01:/var/www/mentor_api/routes#
+
+
+
+
+
+root@ubuntu-s-1vcpu-1gb-amd-nyc3-01:/var/www/mentor_api# root@ubuntu-s-1vcpu-1gb-amd-nyc3-01:/var/www/mentor_api# cat config.py
+
+import os  # ✅ No extra characters
+from flask import Flask
+from flask_cors import CORS
+from flask_jwt_extended import JWTManager
+from dotenv import load_dotenv
+from mysql.connector import pooling
+
+# ✅ Load environment variables only in development
+if os.getenv("FLASK_ENV") != "production":
+    load_dotenv()
+
+# ✅ Initialize Flask app
+app = Flask(__name__)
+
+# ✅ Configure JWT Secret Key with a strong default
+app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET", os.urandom(32).hex())  # Strong random key
+
+# ✅ Initialize JWT Manager
+jwt = JWTManager(app)
+
+# ✅ Allow multiple frontend origins
+CORS(app, resources={r"/*": {"origins": "*"}})  # ✅ Allow all requests
+
+
+
+# ✅ Initialize database connection pooling with error handling
+try:
+    db_pool = pooling.MySQLConnectionPool(
+        pool_name="mypool",
+        pool_size=5,
+        host=os.getenv("DB_HOST", "localhost"),
+        user=os.getenv("DB_USER", "app_user"),
+        password=os.getenv("DB_PASSWORD", "Team0#03Tech"),
+        database=os.getenv("DB_NAME", "mentor_db")
+    )
+except Error as e:
+    print(f"❌ Database connection error: {e}")
+    db_pool = None  # Prevents app from crashing if DB connection fails
+
+root@ubuntu-s-1vcpu-1gb-amd-nyc3-01:/var/www/mentor_api#
+
+
+
+
+
+
+
+

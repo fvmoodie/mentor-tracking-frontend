@@ -55,16 +55,7 @@ const PageManageProgressNotes = () => {
     }
   }, [selectedIndividualId, selectedDate]);
 
-  const formatDateForInput = (date) => {
-    try {
-      const d = new Date(date);
-      return d.toISOString().slice(0, 10);
-    } catch {
-      return "";
-    }
-  };
-
-  const fetchIndividuals = async () => {
+   const fetchIndividuals = async () => {
     try {
       const res = await fetch("https://notesvia.duckdns.org/api/individuals", {
         headers: { Authorization: `Bearer ${token}` },

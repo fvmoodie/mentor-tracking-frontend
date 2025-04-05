@@ -1,0 +1,191 @@
+
+### **1. Insert into `Users`**
+```sql
+INSERT INTO Users (FullName, Email, PasswordHash, Role, IsActive, DebugTrigger) 
+VALUES ('John Doe', 'johndoe@example.com', 'hashedpassword123', 'Mentor', 1, NULL);
+```
+✅ **Save `UserID` for later use in `Mentors` and `UserRoles`.**
+
+---
+
+### **2. Insert into `Roles`**
+```sql
+INSERT INTO Roles (RoleName, Permissions) 
+VALUES ('Admin', 'ALL');
+```
+✅ **Save `RoleID` for later use in `UserRoles`.**
+
+---
+
+### **3. Insert into `Permissions`**
+```sql
+INSERT INTO Permissions (PermissionName) 
+VALUES ('Edit Records');
+```
+✅ **Save `PermissionID` for later use in `Roles`.**
+
+---
+
+### **4. Insert into `Regions`**
+```sql
+INSERT INTO Regions (RegionName, Description) 
+VALUES ('North Region', 'Covers the northern territory.');
+```
+✅ **Save `RegionID` for later use in `Mentors`.**
+
+---
+
+### **5. Insert into `Individuals`**
+```sql
+INSERT INTO Individuals (FullName, DOB, BehaviorPlan, MentorID) 
+VALUES ('Jane Smith', '2000-06-15', 1, NULL);
+```
+✅ **Save `IndividualID` for later use in `ActionPlans`, `EmergencyDrills`, `MedicalVisits`, `MentorAssignments`, `ObjectiveDataSheet`, `ReportTracking`, and `TaskReminders`.**
+
+---
+
+### **6. Insert into `Mentors`**
+```sql
+INSERT INTO Mentors (UserID, RegionID, DigitalSignature, Initials)
+VALUES (
+    (SELECT UserID FROM Users WHERE Email = 'johndoe@example.com'),
+    (SELECT RegionID FROM Regions WHERE RegionName = 'North Region'),
+    NULL,
+    'JD'
+);
+```
+✅ **Save `MentorID` for later use in `MentorAssignments`, `ReportTracking`, and `TaskReminders`.**
+
+---
+
+### **7. Insert into `UserRoles`**
+```sql
+INSERT INTO UserRoles (UserID, RoleID) 
+VALUES (
+    (SELECT UserID FROM Users WHERE Email = 'johndoe@example.com'),
+    (SELECT RoleID FROM Roles WHERE RoleName = 'Admin')
+);
+```
+
+---
+
+### **8. Insert into `ReportTracking`**
+```sql
+INSERT INTO ReportTracking (MentorID, IndividualID, ReportType, DueDate, SubmissionDate, Status)
+VALUES (
+    (SELECT MentorID FROM Mentors WHERE Initials = 'JD'),
+    (SELECT IndividualID FROM Individuals WHERE FullName = 'Jane Smith'),
+    'Monthly Progress',
+    '2025-03-30',
+    NULL,
+    'Pending'
+);
+```
+
+---
+
+### **9. Insert into `MentorAssignments`**
+```sql
+INSERT INTO MentorAssignments (MentorID, IndividualID)
+VALUES (
+    (SELECT MentorID FROM Mentors WHERE Initials = 'JD'),
+    (SELECT IndividualID FROM Individuals WHERE FullName = 'Jane Smith')
+);
+```
+
+---
+
+### **10. Insert into `ObjectiveDataSheet`**
+```sql
+INSERT INTO ObjectiveDataSheet (IndividualID, ObjectiveDescription, Frequency, StartDate, EndDate, Status)
+VALUES (
+    (SELECT IndividualID FROM Individuals WHERE FullName = 'Jane Smith'),
+    'Improve social skills',
+    'Weekly',
+    '2025-03-10',
+    NULL,
+    'Active'
+);
+```
+
+---
+
+### **11. Insert into `EmergencyDrills`**
+```sql
+INSERT INTO EmergencyDrills (IndividualID, Location, Date, TimeRequired, EvacuationPlanPosted, DiscussionDate, Participants)
+VALUES (
+    (SELECT IndividualID FROM Individuals WHERE FullName = 'Jane Smith'),
+    'Building A',
+    '2025-03-15',
+    10,
+    '2025-03-12',
+    '2025-03-13',
+    'John Doe, Jane Smith'
+);
+```
+
+---
+
+### **12. Insert into `MedicalVisits`**
+```sql
+INSERT INTO MedicalVisits (IndividualID, VisitDate, DoctorNotes)
+VALUES (
+    (SELECT IndividualID FROM Individuals WHERE FullName = 'Jane Smith'),
+    '2025-03-05',
+    'Routine checkup, no issues.'
+);
+```
+
+---
+
+### **13. Insert into `TaskReminders`**
+```sql
+INSERT INTO TaskReminders (MentorID, IndividualID, TaskType, DueDate, Status)
+VALUES (
+    (SELECT MentorID FROM Mentors WHERE Initials = 'JD'),
+    (SELECT IndividualID FROM Individuals WHERE FullName = 'Jane Smith'),
+    'Follow-up Meeting',
+    '2025-03-20',
+    'Pending'
+);
+```
+
+---
+
+### **14. Insert into `ActionPlans`**
+```sql
+INSERT INTO ActionPlans (IndividualID, PlanDetails, StartDate, EndDate)
+VALUES (
+    (SELECT IndividualID FROM Individuals WHERE FullName = 'Jane Smith'),
+    'Implement a personalized behavior improvement plan.',
+    '2025-03-01',
+    '2025-06-01'
+);
+```
+
+---
+
+### **15. Insert into `AuditTrail`**
+```sql
+INSERT INTO AuditTrail (UserID, TableName, Action, OldValue, NewValue, Timestamp)
+VALUES (
+    (SELECT UserID FROM Users WHERE Email = 'johndoe@example.com'),
+    'Individuals',
+    'INSERT',
+    NULL,
+    'Added Jane Smith',
+    NOW()
+);
+```
+
+---
+
+## **✅ Notes**
+1. **Foreign Key Dependencies**: Each insert references existing records.
+2. **Auto-Increment Handling**: The database will automatically generate IDs.
+3. **NULL Handling**: Some fields accept NULL if values are not provided.
+4. **Subqueries for Foreign Keys**: The queries dynamically fetch IDs where required.
+
+---
+
+Would you like a SQL script to **automate inserting test data** for multiple individuals and mentors? 🚀

@@ -1,0 +1,169 @@
+Here’s a **set of SQL UPDATE statements** to modify records in each table while ensuring **foreign key integrity**.
+
+---
+
+### **1. Update `Users`**
+```sql
+UPDATE Users 
+SET FullName = 'John D. Doe', Email = 'john.doe@example.com' 
+WHERE Email = 'johndoe@example.com';
+```
+🔹 Updates the user’s **name and email**.
+
+---
+
+### **2. Update `Roles`**
+```sql
+UPDATE Roles 
+SET RoleName = 'Super Admin', Permissions = 'ALL,EDIT,DELETE' 
+WHERE RoleName = 'Admin';
+```
+🔹 Expands **permissions** for the Admin role.
+
+---
+
+### **3. Update `Permissions`**
+```sql
+UPDATE Permissions 
+SET PermissionName = 'Manage Users' 
+WHERE PermissionName = 'Edit Records';
+```
+🔹 Renames a permission for clarity.
+
+---
+
+### **4. Update `Regions`**
+```sql
+UPDATE Regions 
+SET RegionName = 'North-East Region', Description = 'Expanded coverage area.' 
+WHERE RegionName = 'North Region';
+```
+🔹 Expands the **region name and description**.
+
+---
+
+### **5. Update `Individuals`**
+```sql
+UPDATE Individuals 
+SET FullName = 'Jane A. Smith', DOB = '2000-07-01', BehaviorPlan = 0 
+WHERE FullName = 'Jane Smith';
+```
+🔹 Updates the **individual’s name, birthdate, and behavior plan**.
+
+---
+
+### **6. Update `Mentors`**
+```sql
+UPDATE Mentors 
+SET RegionID = (SELECT RegionID FROM Regions WHERE RegionName = 'North-East Region'), 
+    Initials = 'JDD' 
+WHERE MentorID = (SELECT MentorID FROM Mentors WHERE Initials = 'JD');
+```
+🔹 Updates **region assignment** and initials.
+
+---
+
+### **7. Update `UserRoles`**
+```sql
+UPDATE UserRoles 
+SET RoleID = (SELECT RoleID FROM Roles WHERE RoleName = 'Super Admin') 
+WHERE UserID = (SELECT UserID FROM Users WHERE Email = 'john.doe@example.com');
+```
+🔹 Assigns the **new role** to the user.
+
+---
+
+### **8. Update `ReportTracking`**
+```sql
+UPDATE ReportTracking 
+SET Status = 'Completed', SubmissionDate = NOW() 
+WHERE ReportType = 'Monthly Progress' 
+AND IndividualID = (SELECT IndividualID FROM Individuals WHERE FullName = 'Jane A. Smith');
+```
+🔹 Marks a **report as completed**.
+
+---
+
+### **9. Update `MentorAssignments`**
+```sql
+UPDATE MentorAssignments 
+SET MentorID = (SELECT MentorID FROM Mentors WHERE Initials = 'JDD') 
+WHERE IndividualID = (SELECT IndividualID FROM Individuals WHERE FullName = 'Jane A. Smith');
+```
+🔹 Reassigns the **mentor**.
+
+---
+
+### **10. Update `ObjectiveDataSheet`**
+```sql
+UPDATE ObjectiveDataSheet 
+SET Status = 'Completed', EndDate = '2025-06-30' 
+WHERE IndividualID = (SELECT IndividualID FROM Individuals WHERE FullName = 'Jane A. Smith');
+```
+🔹 Marks the **objective as completed**.
+
+---
+
+### **11. Update `EmergencyDrills`**
+```sql
+UPDATE EmergencyDrills 
+SET Participants = 'John D. Doe, Jane A. Smith, Mike Lee' 
+WHERE Location = 'Building A' 
+AND Date = '2025-03-15';
+```
+🔹 Adds a new **participant**.
+
+---
+
+### **12. Update `MedicalVisits`**
+```sql
+UPDATE MedicalVisits 
+SET DoctorNotes = 'Routine checkup, minor issues addressed.' 
+WHERE VisitDate = '2025-03-05' 
+AND IndividualID = (SELECT IndividualID FROM Individuals WHERE FullName = 'Jane A. Smith');
+```
+🔹 Updates **doctor notes**.
+
+---
+
+### **13. Update `TaskReminders`**
+```sql
+UPDATE TaskReminders 
+SET Status = 'Completed' 
+WHERE TaskType = 'Follow-up Meeting' 
+AND DueDate = '2025-03-20';
+```
+🔹 Marks a **task as completed**.
+
+---
+
+### **14. Update `ActionPlans`**
+```sql
+UPDATE ActionPlans 
+SET EndDate = '2025-06-15' 
+WHERE IndividualID = (SELECT IndividualID FROM Individuals WHERE FullName = 'Jane A. Smith');
+```
+🔹 Extends the **plan duration**.
+
+---
+
+### **15. Update `AuditTrail`**
+```sql
+UPDATE AuditTrail 
+SET NewValue = 'Updated Jane Smith to Jane A. Smith' 
+WHERE TableName = 'Individuals' 
+AND Action = 'INSERT';
+```
+🔹 Logs the **modification history**.
+
+---
+
+### **✅ Key Points**
+1. **Foreign Keys Handled**: Updates reference existing values dynamically.
+2. **Auto-Increment Columns Not Updated**: `MentorID`, `UserID`, etc., remain unchanged.
+3. **NULL Handling**: If nullable, values are updated accordingly.
+4. **Subqueries Ensure Integrity**: Prevents FK errors by referencing existing IDs.
+
+---
+
+Would you like a **stored procedure** to handle these updates dynamically? 🚀
