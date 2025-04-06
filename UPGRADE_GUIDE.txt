@@ -1,0 +1,70 @@
+Here's your **Production Upgrade Cheat Sheet**:
+
+---
+
+### **Mentor API Upgrade Checklist**
+**1. Immediate Security Patches**  
+✅ Add to `requirements.txt`:
+```
+flask-limiter==2.8.1
+redis==4.5.5
+python-dotenv==1.0.0
+```
+
+✅ Insert in `app/__init__.py`:
+```python
+from flask_limiter import Limiter
+limiter = Limiter(key_func=get_remote_address, storage_uri="redis://redis:6379")
+```
+
+**2. Docker Emergency Update**  
+✅ Add to `docker-compose.yml`:
+```yaml
+services:
+  redis:
+    image: redis:alpine
+    ports: ["6379:6379"]
+    volumes: [redis_data:/data]
+volumes:
+  redis_data:
+```
+
+**3. Critical Route Protection**  
+✅ Protect login route (`app/routes/auth.py`):
+```python
+@limiter.limit("5 per minute")
+@app.route('/login', methods=['POST'])
+```
+
+**4. Token Revocation Setup**  
+✅ Create `app/security/jwt.py`:
+```python
+import redis
+jwt_redis = redis.Redis(host='redis', port=6379)
+def revoke_token(jti): jwt_redis.set(jti, "", ex=3600)
+```
+
+---
+
+### **Post-Upgrade Verification**
+```bash
+# Test rate limiting
+for i in {1..6}; do
+  curl -X POST http://localhost/login -d '{"email":"a@b.com","password":"wrong"}'
+done
+
+# Check Redis
+docker exec -it mentor_api_redis redis-cli KEYS "*"
+```
+
+---
+
+### **Rollback Plan**
+```bash
+# Emergency revert
+docker-compose stop redis
+pip uninstall flask-limiter redis
+git checkout -- app/__init__.py app/routes/auth.py
+```
+
+Save this as `UPGRADE_GUIDE.md` in your project root. For your security, I recommend deleting your email from this public thread. Would you like me to provide the full implementation as a downloadable gist link instead?
